@@ -51,12 +51,12 @@ func (v *Vec) SetFloat(index uint64, item interface{}) {
 
 // AtInt returns the integer value stored at the index provided.
 func (v *Vec) AtInt(index uint64) int64 {
-	return v.data[index].(int64)
+	return convertToInt64(v.data[index])
 }
 
 // AtFloat returns the floating value stored at the index provided.
 func (v *Vec) AtFloat(index uint64) float64 {
-	return v.data[index].(float64)
+	return convertToFloat64(v.data[index])
 }
 
 // First returns a pointer pointing to the first member of the vector.
@@ -109,7 +109,9 @@ func (v *Vec) Index(toFind interface{}) (uint64, error) {
 // range, length, etc (but not the mutex) into a new vector.
 func (v *Vec) Copy() *Vec {
 	n := New(v.capacity)
-	copy(n.data, v.Range())
+	for i := range n.data {
+		n.data[i] = v.Range()[i]
+	}
 	return n
 }
 

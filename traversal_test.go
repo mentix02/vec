@@ -1,6 +1,9 @@
 package vec
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestVec_At(t *testing.T) {
 	s := []int64{3, 1, 4, 6}
@@ -20,4 +23,11 @@ func TestVec_AtFloat(t *testing.T) {
 			t.Errorf("v.AtFloat(%d) (%f) != %f", index, v.AtFloat(uint64(index)), item)
 		}
 	}
+}
+
+func TestVec_Copy(t *testing.T) {
+	s := []int64{3, 1, 4, 6}
+	v := NewFromInt(s)
+	ov := v.Copy()
+	fmt.Println(ov.Range())
 }

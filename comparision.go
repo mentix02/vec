@@ -2,6 +2,7 @@ package vec
 
 import "errors"
 
+//
 func (v *Vec) Swap(i1, i2 uint64) error {
 	if i1 > v.Len() || i2 > v.Len() {
 		return errors.New("list index out of range")
@@ -11,7 +12,7 @@ func (v *Vec) Swap(i1, i2 uint64) error {
 	}
 }
 
-//EqualsVec checks for equality between two vectors.
+// EqualsVec checks for equality between two vectors.
 func (v *Vec) EqualsVec(ov *Vec) bool {
 	if v.Len() != ov.Len() {
 		return false

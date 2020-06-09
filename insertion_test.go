@@ -60,3 +60,12 @@ func TestVec_ExtendFromVec(t *testing.T) {
 		}
 	}
 }
+
+func TestVec_Insert(t *testing.T) {
+	s := []int64{2, 1, 4, 3}
+	v := NewFromInt(s)
+	v.Insert(1, 8)
+	if v.AtInt(1) != 8 {
+		t.Error("insertion failed")
+	}
+}
