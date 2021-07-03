@@ -112,6 +112,7 @@ func (v *Vec) Copy() *Vec {
 	for i := range n.data {
 		n.data[i] = v.Range()[i]
 	}
+	n.length = v.Len()
 	return n
 }
 

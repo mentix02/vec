@@ -1,9 +1,6 @@
 package vec
 
-import (
-	"fmt"
-	"testing"
-)
+import "testing"
 
 func TestVec_At(t *testing.T) {
 	s := []int64{3, 1, 4, 6}
@@ -29,5 +26,7 @@ func TestVec_Copy(t *testing.T) {
 	s := []int64{3, 1, 4, 6}
 	v := NewFromInt(s)
 	ov := v.Copy()
-	fmt.Println(ov.Range())
+	if ov.Len() != v.Len() {
+		t.Errorf("ov.Len() [%d] != v.Len() [%d]", ov.Len(), v.Len())
+	}
 }
